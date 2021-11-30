@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "workspaces": [
+    "components",
+    "docs",
+    "playroom"
+  ]
+}

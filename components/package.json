@@ -1,0 +1,16 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "dependencies": {
+    "@vanilla-extract/css": "^1.6.3",
+    "@vanilla-extract/recipes": "^0.2.1"
+  },
+  "peerDependencies": {
+    "react": "^17",
+    "react-dom": "^17"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.37",
+    "typescript": "^4.5.2"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "playroom",
+  "version": "1.0.0",
+  "dependencies": {
+    "@vanilla-extract/css": "^1.6.3",
+    "components": "1.0.0"
+  }
+}
