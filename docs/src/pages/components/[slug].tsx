@@ -3,6 +3,14 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 
 import { allComponents } from ".contentlayer/data";
 import type { Component } from ".contentlayer/types";
+import CodeBlock from "../../components/CodeBlock";
+
+const components = {
+  code: (props) => <CodeBlock {...props} />,
+  pre: (props) => (
+    <pre {...props} style={props.live ? { color: "red" } : { color: "blue" }} />
+  ),
+};
 
 export default function Page({ component }: { component: Component }) {
   const Component = useMDXComponent(component.body.code);
@@ -10,8 +18,8 @@ export default function Page({ component }: { component: Component }) {
   return (
     <article>
       <h1>{component.title}</h1>
-      <code>{component.description}</code>
-      <Component />
+      <p>{component.description}</p>
+      <Component components={components} />
     </article>
   );
 }

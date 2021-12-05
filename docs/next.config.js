@@ -6,6 +6,9 @@ const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig = {
   pageExtensions: ["js", "tsx", "md", "mdx"],
   reactStrictMode: true,
+  experimental: {
+    externalDir: true,
+  },
 };
 
 module.exports = withContentlayer()(withVanillaExtract(nextConfig));

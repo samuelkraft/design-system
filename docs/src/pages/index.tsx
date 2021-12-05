@@ -1,5 +1,4 @@
 import { allComponents } from ".contentlayer/data";
-import Link from "next/link";
 import { InferGetStaticPropsType } from "next";
 
 const Home = ({
