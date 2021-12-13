@@ -6,8 +6,8 @@ import type { Component } from ".contentlayer/types";
 import CodeBlock from "../../components/CodeBlock";
 
 const components = {
-  code: (props) => <CodeBlock {...props} />,
-  pre: (props) => (
+  code: (props: any) => <CodeBlock {...props} />,
+  pre: (props: any) => (
     <pre {...props} style={props.live ? { color: "red" } : { color: "blue" }} />
   ),
 };
@@ -32,6 +32,6 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const component = allComponents.find((c) => c.slug === params.slug);
+  const component = allComponents.find((c) => c.slug === params?.slug);
   return { props: { component } };
 };
