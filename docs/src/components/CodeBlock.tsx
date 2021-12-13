@@ -18,17 +18,11 @@ const Code = ({ code }: CodeProps) => (
   </LiveProvider>
 );
 
-const CodeBlock = ({
-  children,
-  live = true,
-}: {
-  children: string;
-  live?: boolean;
-}) => {
+const CodeBlock = ({ children, live }) => {
   if (live) {
     return (
       <div className={styles.live}>
-        <Code code={children.trim()} />
+        <Code code={children} />
       </div>
     );
   }

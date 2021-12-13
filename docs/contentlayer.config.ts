@@ -3,6 +3,7 @@ import {
   makeSource,
   ComputedFields,
 } from "contentlayer/source-files";
+import { rehypeMetaAttribute } from "./src/lib/rehype-meta-attribute";
 
 const computedFields: ComputedFields = {
   slug: {
@@ -29,4 +30,7 @@ export const Component = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "../components/src/components",
   documentTypes: [Component],
+  mdx: {
+    rehypePlugins: [rehypeMetaAttribute],
+  },
 });

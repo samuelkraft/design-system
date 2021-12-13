@@ -11,7 +11,7 @@ export const wrapper = style({
 export const sidebar = style({
   position: "sticky",
   top: 0,
-  width: 280,
+  flex: "0 0 280px",
   marginRight: 80,
   alignSelf: "flex-start",
   display: "flex",

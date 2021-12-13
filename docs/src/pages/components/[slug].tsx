@@ -1,16 +1,10 @@
 import { GetStaticProps } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
+import { components } from "../../components/MDX";
+
 import { allComponents } from ".contentlayer/data";
 import type { Component } from ".contentlayer/types";
-import CodeBlock from "../../components/CodeBlock";
-
-const components = {
-  code: (props: any) => <CodeBlock {...props} />,
-  pre: (props: any) => (
-    <pre {...props} style={props.live ? { color: "red" } : { color: "blue" }} />
-  ),
-};
 
 export default function Page({ component }: { component: Component }) {
   const Component = useMDXComponent(component.body.code);
