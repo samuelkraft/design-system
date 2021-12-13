@@ -9,9 +9,11 @@ export const button = recipe({
     variant: {
       primary: {
         backgroundColor: "blue",
+        color: "white",
       },
       secondary: {
         backgroundColor: "green",
+        color: "white",
       },
     },
     size: {

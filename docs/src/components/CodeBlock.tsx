@@ -10,7 +10,7 @@ type CodeProps = {
 
 const Code = ({ code }: CodeProps) => (
   <LiveProvider code={code} scope={scope}>
-    <LivePreview />
+    <LivePreview className={styles.preview} />
     <LiveEditor className={styles.editor} />
     <p style={{ color: "red" }}>
       <LiveError />
