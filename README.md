@@ -1,7 +1,7 @@
 # design-system
 WIP design system starter repo.
 
-https://design-system-vert.vercel.app
+https://design-system-starter.vercel.app
 
 * Design system
 * Docs site
