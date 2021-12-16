@@ -5,11 +5,11 @@ import { visit } from "unist-util-visit";
 var re = /\b([-\w]+)(?:=(?:"([^"]*)"|'([^']*)'|([^"'\s]+)))?/g;
 
 export const rehypeMetaAttribute = (options = {}) => {
-  return (tree) => {
+  return (tree: any) => {
     visit(tree, "element", visitor);
   };
 
-  function visitor(node, index, parentNode) {
+  function visitor(node: any, index: any, parentNode: any) {
     var match;
 
     if (node.tagName === "code" && node.data && node.data.meta) {
