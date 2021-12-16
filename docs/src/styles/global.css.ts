@@ -1,4 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
+import { vars } from "./vars.css";
 
 /*
   Josh's Custom CSS Reset
@@ -20,6 +21,8 @@ globalStyle("html, body", {
 globalStyle("body", {
   lineHeight: 1.5,
   WebkitFontSmoothing: "antialiased",
+  background: vars.colors.background,
+  color: vars.colors.text,
 });
 
 globalStyle("img, picture, video, canvas, svg", {
