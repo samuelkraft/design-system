@@ -2,8 +2,8 @@
   "name": "components",
   "version": "1.0.0",
   "dependencies": {
-    "@vanilla-extract/css": "^1.6.3",
-    "@vanilla-extract/recipes": "^0.2.1"
+    "@vanilla-extract/css": "^1.6.8",
+    "@vanilla-extract/recipes": "^0.2.3"
   },
   "peerDependencies": {
     "react": "^17",
