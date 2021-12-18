@@ -4,7 +4,7 @@ import {
   createThemeContract,
 } from "@vanilla-extract/css";
 
-const root = createGlobalTheme("#app", {
+const root = createGlobalTheme("html", {
   space: {
     small: "4px",
     medium: "8px",
@@ -42,6 +42,12 @@ export const darkTheme = createTheme(colors, {
   background: "#272727",
   card: "#1F2937",
   text: "#F9FAFB",
+});
+
+export const christmasTheme = createTheme(colors, {
+  background: "red",
+  card: "white",
+  text: "green",
 });
 
 export const vars = { ...root, colors };

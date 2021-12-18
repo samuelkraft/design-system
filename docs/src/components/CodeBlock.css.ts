@@ -6,12 +6,12 @@ export const editor = style({
 });
 
 export const preview = style({
-  padding: 20,
+  padding: vars.space.large,
 });
 
 export const live = style({
   backgroundColor: vars.colors.card,
-  marginBottom: 32,
+  marginBottom: vars.space.medium,
   borderRadius: 4,
   overflow: "hidden",
 });
