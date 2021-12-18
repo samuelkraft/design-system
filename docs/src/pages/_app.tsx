@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { ThemeProvider, useTheme } from "next-themes";
+import { ThemeProvider } from "next-themes";
 import { Layout } from "../components/Layout";
 import { lightTheme, darkTheme, christmasTheme } from "../styles/vars.css";
 import "../styles/global.css";
