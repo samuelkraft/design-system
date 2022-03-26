@@ -23,6 +23,8 @@ globalStyle("body", {
   WebkitFontSmoothing: "antialiased",
   background: vars.colors.background,
   color: vars.colors.text,
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, 'Segoe UI Emoji', 'Segoe UI Symbol'",
 });
 
 globalStyle("img, picture, video, canvas, svg", {

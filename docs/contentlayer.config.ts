@@ -4,6 +4,8 @@ import {
   ComputedFields,
 } from "contentlayer/source-files";
 import { rehypeMetaAttribute } from "./src/lib/rehype-meta-attribute";
+import { getTypes } from "./src/utils/getTypes";
+import { getComponentName, getComponentPaths } from "./src/utils/fs";
 
 const computedFields: ComputedFields = {
   slug: {
@@ -13,6 +15,19 @@ const computedFields: ComputedFields = {
         .replace(/\.mdx$/, "")
         .replace(/\.docs$/, "")
         .toLowerCase(),
+  },
+  types: {
+    type: "json",
+    resolve: (doc) => {
+      const slug = doc._raw.sourceFileName
+        .replace(/\.mdx$/, "")
+        .replace(/\.docs$/, "");
+      const pathname = getComponentPaths().find(
+        (x) => getComponentName(x) === slug
+      ) as string;
+      const componentPathname = pathname?.replace("docs.mdx", "tsx");
+      return getTypes(componentPathname)[slug];
+    },
   },
 };
 

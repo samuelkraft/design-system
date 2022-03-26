@@ -10,10 +10,6 @@ const root = createGlobalTheme("html", {
     medium: "8px",
     large: "16px",
   },
-  fonts: {
-    heading: "Georgia, Times, Times New Roman, serif",
-    body: "system-ui",
-  },
   fontSizes: {
     small: "16px",
     medium: "20px",

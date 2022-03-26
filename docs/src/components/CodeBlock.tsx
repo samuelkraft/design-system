@@ -1,8 +1,8 @@
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import * as styles from "./CodeBlock.css";
-import { Button, Heading } from "components/src";
+import { Button, Heading, Stack } from "components/src";
 
-const scope = { Button, Heading };
+const scope = { Button, Heading, Stack };
 
 type CodeProps = {
   code: string;
@@ -31,7 +31,7 @@ const CodeBlock = ({ children, live }: CodeBlockProps) => {
       </div>
     );
   }
-  return <p>{children}</p>;
+  return <>{children}</>;
 };
 
 export default CodeBlock;
