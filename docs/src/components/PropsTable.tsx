@@ -12,6 +12,7 @@ type Prop = {
   required: boolean;
   type: {
     raw: string;
+    name: string;
   };
 };
 
@@ -37,7 +38,7 @@ const PropsTable = ({ types }: { types: Prop[] }) => {
             <Td>{prop.description || "-"}</Td>
             <Td>{prop.defaultValue?.value || "-"}</Td>
             <Td>{prop.required ? "true" : "false"}</Td>
-            <Td>{prop.type.raw}</Td>
+            <Td>{prop.type.raw || prop.type.name}</Td>
           </tr>
         ))}
       </tbody>
