@@ -18,7 +18,6 @@ type Prop = {
 
 const PropsTable = ({ types }: { types: Prop[] }) => {
   const props = Object.values(types);
-  console.log("types yo!", types);
 
   return (
     <table className={styles.table} cellSpacing="0">
