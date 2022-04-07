@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import Link from "next/link";
-import { allComponents } from "contentlayer/generated";
+import { allComponents, allGuides } from "contentlayer/generated";
 import * as styles from "./Layout.css";
 import ThemeChanger from "./ThemeChanger";
 
@@ -15,6 +15,13 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <aside className={styles.sidebar}>
         <ThemeChanger />
         <Link href="/">Home</Link>
+
+        <p className={styles.sidebarTitle}>Guides</p>
+        {allGuides.map((guide) => (
+          <Link key={guide.title} href={`/guides/${guide.slug}`}>
+            {guide.title}
+          </Link>
+        ))}
 
         <p className={styles.sidebarTitle}>Components</p>
         {allComponents.map((component) => (

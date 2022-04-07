@@ -5,7 +5,12 @@ import {
 } from "contentlayer/source-files";
 import { rehypeMetaAttribute } from "./src/lib/rehype-meta-attribute";
 import { getTypes } from "./src/utils/getTypes";
-import { getComponentName, getComponentPaths } from "./src/utils/fs";
+import {
+  getComponentName,
+  getComponentPaths,
+  getGuideName,
+  getGuidePaths,
+} from "./src/utils/fs";
 import { createGitHubLink } from "./src/utils/github";
 
 const getSlug = (sourceFileName: string) =>
@@ -50,7 +55,7 @@ const computedFields: ComputedFields = {
 
 export const Component = defineDocumentType(() => ({
   name: "Component",
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `./components/src/components/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -59,9 +64,36 @@ export const Component = defineDocumentType(() => ({
   computedFields,
 }));
 
+export const Guide = defineDocumentType(() => ({
+  name: "Guide",
+  filePathPattern: `./docs/src/guides/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => getSlug(doc._raw.sourceFileName).toLowerCase(),
+    },
+    docsLink: {
+      type: "string",
+      resolve: (doc) => {
+        const slug = getSlug(doc._raw.sourceFileName);
+        const pathname = getGuidePaths().find(
+          (x) => getGuideName(x) === slug
+        ) as string;
+        return createGitHubLink(pathname.replace(/^\/.*design-system/i, ""));
+      },
+    },
+  },
+}));
+
 export default makeSource({
-  contentDirPath: "../components/src/components",
-  documentTypes: [Component],
+  contentDirPath: "../",
+  contentDirInclude: ["./components/src/components", "./docs/src/guides"],
+  documentTypes: [Component, Guide],
   mdx: {
     rehypePlugins: [rehypeMetaAttribute],
   },
