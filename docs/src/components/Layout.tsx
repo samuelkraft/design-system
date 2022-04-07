@@ -4,12 +4,19 @@ import { allComponents, allGuides } from "contentlayer/generated";
 import * as styles from "./Layout.css";
 import ThemeChanger from "./ThemeChanger";
 
+const searchFilter = (query: string, item: any) =>
+  item.title.toLowerCase().includes(query.toLowerCase()) ||
+  item.body.raw.toLowerCase().includes(query.toLowerCase());
+
 export const Layout = ({ children }: { children: ReactNode }) => {
   const [query, setQuery] = useState("");
 
-  const results = allComponents.filter((component) =>
-    component.title.toLowerCase().includes(query.toLowerCase())
+  const componentResults = allComponents.filter((component) =>
+    searchFilter(query, component)
   );
+  const guideResults = allGuides.filter((guide) => searchFilter(query, guide));
+
+  const results = [...componentResults, ...guideResults];
   return (
     <div className={styles.wrapper}>
       <aside className={styles.sidebar}>
