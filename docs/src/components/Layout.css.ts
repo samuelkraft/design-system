@@ -22,3 +22,10 @@ export const sidebar = style({
 export const main = style({
   width: "100%",
 });
+
+export const sidebarTitle = style({
+  textTransform: "uppercase",
+  fontSize: "0.7rem",
+  fontWeight: "600",
+  opacity: 0.7,
+});

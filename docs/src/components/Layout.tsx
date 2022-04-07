@@ -15,6 +15,8 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <aside className={styles.sidebar}>
         <ThemeChanger />
         <Link href="/">Home</Link>
+
+        <p className={styles.sidebarTitle}>Components</p>
         {allComponents.map((component) => (
           <Link key={component.title} href={`/components/${component.slug}`}>
             {component.title}
