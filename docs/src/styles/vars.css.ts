@@ -26,24 +26,28 @@ const colors = createThemeContract({
   background: null,
   card: null,
   text: null,
+  link: null,
 });
 
 export const lightTheme = createTheme(colors, {
   background: "#EFF6FF",
   card: "#F5F8FA",
   text: "#1F2937",
+  link: "blue",
 });
 
 export const darkTheme = createTheme(colors, {
   background: "#272727",
   card: "#1F2937",
   text: "#F9FAFB",
+  link: "#f3f3f3",
 });
 
 export const christmasTheme = createTheme(colors, {
   background: "red",
   card: "white",
   text: "green",
+  link: "darkgreen",
 });
 
 export const vars = { ...root, colors };
