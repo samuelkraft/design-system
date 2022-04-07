@@ -51,7 +51,7 @@ const computedFields: ComputedFields = {
 export const Component = defineDocumentType(() => ({
   name: "Component",
   filePathPattern: `**/*.mdx`,
-  bodyType: "mdx",
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: true },

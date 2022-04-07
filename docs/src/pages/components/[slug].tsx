@@ -2,8 +2,8 @@ import { GetStaticProps } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { components } from "../../components/MDX";
 
-import { allComponents } from ".contentlayer/data";
-import type { Component } from ".contentlayer/types";
+import { allComponents } from "contentlayer/generated";
+import type { Component } from "contentlayer/generated";
 import { Stack } from "components/src";
 
 export default function Page({ component }: { component: Component }) {

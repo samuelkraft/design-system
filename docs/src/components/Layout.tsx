@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import Link from "next/link";
-import { allComponents } from ".contentlayer/data";
+import { allComponents } from "contentlayer/generated";
 import * as styles from "./Layout.css";
 import ThemeChanger from "./ThemeChanger";
 
