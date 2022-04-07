@@ -17,6 +17,8 @@ export default function Page({ component }: { component: Component }) {
         <h1>{component.title}</h1>
         <p>{component.description}</p>
         <Component components={components} />
+        <a href={component.sourceLink}>View source</a>
+        <a href={component.docsLink}>Edit this page</a>
       </Stack>
     </article>
   );
