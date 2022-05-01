@@ -14,14 +14,14 @@ export const getComponentName = (pathname: string) => {
   return componentName.replace(path.extname(componentName), "");
 };
 
-export const getGuidePaths = () => {
-  return glob.sync("./src/guides/**/*.mdx", {
+export const getDocPaths = () => {
+  return glob.sync("./src/content/**/*.mdx", {
     cwd: process.cwd(),
     absolute: true,
   });
 };
 
-export const getGuideName = (pathname: string) => {
-  const guideName = path.basename(pathname, ".mdx");
-  return guideName.replace(path.extname(guideName), "");
+export const getDocName = (pathname: string) => {
+  const docName = path.basename(pathname, ".mdx");
+  return docName.replace(path.extname(docName), "");
 };

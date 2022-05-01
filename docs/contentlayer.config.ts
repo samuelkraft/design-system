@@ -8,8 +8,8 @@ import { getTypes } from "./src/utils/getTypes";
 import {
   getComponentName,
   getComponentPaths,
-  getGuideName,
-  getGuidePaths,
+  getDocName,
+  getDocPaths,
 } from "./src/utils/fs";
 import { createGitHubLink } from "./src/utils/github";
 
@@ -64,9 +64,9 @@ export const Component = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Guide = defineDocumentType(() => ({
-  name: "Guide",
-  filePathPattern: `./docs/src/guides/**/*.mdx`,
+export const Doc = defineDocumentType(() => ({
+  name: "Doc",
+  filePathPattern: `./docs/src/content/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -81,8 +81,8 @@ export const Guide = defineDocumentType(() => ({
       type: "string",
       resolve: (doc) => {
         const slug = getSlug(doc._raw.sourceFileName);
-        const pathname = getGuidePaths().find(
-          (x) => getGuideName(x) === slug
+        const pathname = getDocPaths().find(
+          (x) => getDocName(x) === slug
         ) as string;
         return createGitHubLink(pathname.replace(/^\/.*design-system/i, ""));
       },
@@ -92,8 +92,8 @@ export const Guide = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "../",
-  contentDirInclude: ["./components/src/components", "./docs/src/guides"],
-  documentTypes: [Component, Guide],
+  contentDirInclude: ["./components/src/components", "./docs/src/content"],
+  documentTypes: [Component, Doc],
   mdx: {
     rehypePlugins: [rehypeMetaAttribute],
   },

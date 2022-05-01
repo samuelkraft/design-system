@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import * as styles from "./ThemeChanger.css";
 
 const ThemeChanger = () => {
   const [mounted, setMounted] = useState(false);
@@ -13,11 +14,15 @@ const ThemeChanger = () => {
   return (
     <div>
       Theme:
-      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+      <select
+        value={theme}
+        onChange={(e) => setTheme(e.target.value)}
+        className={styles.select}
+      >
         <option value="system">System</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
-        <option value="christmas">Christmas</option>
+        <option value="purple">Purple</option>
       </select>
     </div>
   );

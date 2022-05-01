@@ -12,7 +12,7 @@ export type ButtonProps = {
 
 export const Button = ({
   children,
-  variant = "secondary",
+  variant = "primary",
   size = "medium",
 }: ButtonProps) => {
   return (

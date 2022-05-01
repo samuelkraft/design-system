@@ -4,11 +4,24 @@ import {
   createThemeContract,
 } from "@vanilla-extract/css";
 
+import {
+  gray,
+  blue,
+  blueDark,
+  sand,
+  sandDark,
+  purple,
+  sandA,
+  sandDarkA,
+  purpleA,
+} from "@radix-ui/colors";
+
 const root = createGlobalTheme("html", {
   space: {
     small: "4px",
     medium: "8px",
     large: "16px",
+    xlarge: "24px",
   },
   fontSizes: {
     small: "16px",
@@ -24,30 +37,46 @@ const root = createGlobalTheme("html", {
 
 const colors = createThemeContract({
   background: null,
+  backgroundOpaque: null,
   card: null,
   text: null,
+  textSecondary: null,
   link: null,
+  border: null,
+  code: null,
 });
 
 export const lightTheme = createTheme(colors, {
-  background: "#EFF6FF",
-  card: "#F5F8FA",
-  text: "#1F2937",
-  link: "blue",
+  background: sand.sand1,
+  backgroundOpaque: "rgba(253, 253, 253, 0.9)",
+  card: sand.sand4,
+  text: sand.sand12,
+  textSecondary: sand.sand11,
+  link: blue.blue11,
+  border: sand.sand5,
+  code: sand.sand12,
 });
 
 export const darkTheme = createTheme(colors, {
-  background: "#272727",
-  card: "#1F2937",
-  text: "#F9FAFB",
-  link: "#f3f3f3",
+  background: sandDark.sand1,
+  backgroundOpaque: "rgba(22,22, 21, 0.9)",
+  card: sandDark.sand5,
+  text: sandDark.sand12,
+  textSecondary: sandDark.sand11,
+  link: blueDark.blue11,
+  border: sandDark.sand4,
+  code: sandDark.sand3,
 });
 
-export const christmasTheme = createTheme(colors, {
-  background: "red",
-  card: "white",
-  text: "green",
-  link: "darkgreen",
+export const purpleTheme = createTheme(colors, {
+  background: purple.purple6,
+  backgroundOpaque: "rgba(223, 205, 241, 0.9)",
+  card: purple.purple8,
+  text: purple.purple12,
+  textSecondary: purple.purple11,
+  link: gray.gray12,
+  border: purple.purple7,
+  code: purple.purple12,
 });
 
 export const vars = { ...root, colors };

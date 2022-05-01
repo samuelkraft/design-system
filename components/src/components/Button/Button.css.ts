@@ -1,13 +1,20 @@
 import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
+import { red, sand } from "@radix-ui/colors";
 
 const variant = {
   primary: {
-    backgroundColor: "blue",
+    backgroundColor: red.red10,
     color: "white",
+    ":hover": {
+      backgroundColor: red.red9,
+    },
   },
   secondary: {
-    backgroundColor: "green",
-    color: "white",
+    backgroundColor: sand.sand7,
+    color: sand.sand12,
+    ":hover": {
+      backgroundColor: sand.sand8,
+    },
   },
 };
 
@@ -15,27 +22,29 @@ export type Size = keyof typeof size;
 
 const size = {
   small: {
-    padding: "8px 12px",
-    fontSize: 14,
+    padding: "4px 12px",
   },
   medium: {
-    padding: "12px 16px",
-    fontSize: 16,
+    padding: "8px 16px",
   },
   large: {
-    padding: "14px 20px",
-    fontSize: 18,
+    padding: "12px 20px",
   },
 };
 
 export const button = recipe({
   base: {
     all: "unset",
-    borderRadius: 6,
+    borderRadius: 9999,
+    fontFamily: "sans-serif",
+    fontWeight: "bold",
+    fontSize: 16,
     transition: "all 0.2s ease-in-out",
     ":hover": {
       cursor: "pointer",
-      opacity: 0.8,
+    },
+    ":active": {
+      transform: "scale(0.96)",
     },
   },
   variants: {

@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import { Layout } from "../components/Layout";
-import { lightTheme, darkTheme, christmasTheme } from "../styles/vars.css";
+import { lightTheme, darkTheme, purpleTheme } from "../styles/vars.css";
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       value={{
         light: lightTheme,
         dark: darkTheme,
-        christmas: christmasTheme,
+        purple: purpleTheme,
       }}
     >
       <Layout>

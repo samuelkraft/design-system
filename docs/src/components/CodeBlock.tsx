@@ -6,15 +6,18 @@ const scope = { Button, Heading, Stack };
 
 type CodeProps = {
   code: string;
+  live?: boolean;
 };
 
-const Code = ({ code }: CodeProps) => (
+const Code = ({ code, live }: CodeProps) => (
   <LiveProvider code={code} scope={scope}>
-    <LivePreview className={styles.preview} />
+    {live && <LivePreview className={styles.preview} />}
     <LiveEditor className={styles.editor} />
-    <p style={{ color: "red" }}>
-      <LiveError />
-    </p>
+    {live && (
+      <p style={{ color: "red" }}>
+        <LiveError />
+      </p>
+    )}
   </LiveProvider>
 );
 
@@ -24,14 +27,11 @@ type CodeBlockProps = {
 };
 
 const CodeBlock = ({ children, live }: CodeBlockProps) => {
-  if (live) {
-    return (
-      <div className={styles.live}>
-        <Code code={children} />
-      </div>
-    );
-  }
-  return <>{children}</>;
+  return (
+    <div className={styles.wrapper}>
+      <Code code={children} live={live} />
+    </div>
+  );
 };
 
 export default CodeBlock;

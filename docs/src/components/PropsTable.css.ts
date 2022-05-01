@@ -5,6 +5,8 @@ export const table = style({
   backgroundColor: vars.colors.card,
   color: vars.colors.text,
   width: "100%",
+  borderRadius: 8,
+  overflow: "hidden",
 });
 
 export const td = style({
@@ -14,4 +16,5 @@ export const td = style({
 export const th = style({
   padding: vars.space.large,
   backgroundColor: vars.colors.card,
+  fontWeight: "bold",
 });

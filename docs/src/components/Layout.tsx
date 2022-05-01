@@ -1,12 +1,41 @@
 import { ReactNode, useState } from "react";
 import Link from "next/link";
-import { allComponents, allGuides } from "contentlayer/generated";
+import { allComponents, allDocs } from "contentlayer/generated";
 import * as styles from "./Layout.css";
 import ThemeChanger from "./ThemeChanger";
+import { Stack } from "components/src";
+import { useRouter } from "next/router";
 
 const searchFilter = (query: string, item: any) =>
   item.title.toLowerCase().includes(query.toLowerCase()) ||
   item.body.raw.toLowerCase().includes(query.toLowerCase());
+
+const NavLink = ({
+  children,
+  href,
+}: {
+  children: string | ReactNode;
+  href: string;
+}) => {
+  const router = useRouter();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push(href);
+  };
+
+  return (
+    <a
+      href={href}
+      onClick={handleClick}
+      className={`${styles.link} ${
+        router.asPath === href && styles.activeLink
+      }`}
+    >
+      {children}
+    </a>
+  );
+};
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const [query, setQuery] = useState("");
@@ -14,51 +43,76 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   const componentResults = allComponents.filter((component) =>
     searchFilter(query, component)
   );
-  const guideResults = allGuides.filter((guide) => searchFilter(query, guide));
+  const docResults = allDocs.filter((doc) => searchFilter(query, doc));
 
-  const results = [...componentResults, ...guideResults];
+  const results = [...componentResults, ...docResults];
   return (
-    <div className={styles.wrapper}>
-      <aside className={styles.sidebar}>
-        <ThemeChanger />
-        <Link href="/">Home</Link>
-
-        <p className={styles.sidebarTitle}>Guides</p>
-        {allGuides.map((guide) => (
-          <Link key={guide.title} href={`/guides/${guide.slug}`}>
-            {guide.title}
+    <>
+      <header className={styles.header}>
+        <div className={styles.wrapper}>
+          <Link href="/">
+            <a className={styles.logo}>Design System Starter</a>
           </Link>
-        ))}
-
-        <p className={styles.sidebarTitle}>Components</p>
-        {allComponents.map((component) => (
-          <Link key={component.title} href={`/components/${component.slug}`}>
-            {component.title}
-          </Link>
-        ))}
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          type="search"
-          placeholder="search"
-        />
-      </aside>
-      <main className={styles.main}>
-        {query ? (
-          <>
-            {`search results for ${query}`}
-            <div>
-              {results.map((x) => (
-                <div key={x._id} onClick={() => setQuery("")}>
-                  <Link href={`/components/${x.slug}`}>{x.title}</Link>
-                </div>
-              ))}
-            </div>
-          </>
-        ) : (
-          children
-        )}
-      </main>
-    </div>
+          <Stack space="12px" align="center">
+            <ThemeChanger />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              type="search"
+              placeholder="Search…"
+              className={styles.searchInput}
+            />
+          </Stack>
+        </div>
+      </header>
+      <div className={styles.wrapper}>
+        <aside className={styles.sidebar}>
+          <Stack space="24px" direction="column">
+            <section>
+              <NavLink href="/">Home</NavLink>
+            </section>
+            <Stack space="12px" direction="column">
+              <p className={styles.sidebarTitle}>Getting started</p>
+              <Stack space="12px" direction="column">
+                {allDocs.map((doc) => (
+                  <NavLink key={doc.title} href={`/${doc.slug}`}>
+                    {doc.title}
+                  </NavLink>
+                ))}
+              </Stack>
+            </Stack>
+            <Stack space="12px" direction="column">
+              <p className={styles.sidebarTitle}>Components</p>
+              <Stack space="12px" direction="column">
+                {allComponents.map((component) => (
+                  <NavLink
+                    key={component.title}
+                    href={`/components/${component.slug}`}
+                  >
+                    {component.title}
+                  </NavLink>
+                ))}
+              </Stack>
+            </Stack>
+          </Stack>
+        </aside>
+        <main className={styles.main}>
+          {query ? (
+            <>
+              {`search results for ${query}`}
+              <div>
+                {results.map((x) => (
+                  <div key={x._id} onClick={() => setQuery("")}>
+                    <Link href={`/components/${x.slug}`}>{x.title}</Link>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            children
+          )}
+        </main>
+      </div>
+    </>
   );
 };

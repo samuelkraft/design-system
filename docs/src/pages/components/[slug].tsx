@@ -5,6 +5,7 @@ import { components } from "../../components/MDX";
 import { allComponents } from "contentlayer/generated";
 import type { Component } from "contentlayer/generated";
 import { Stack } from "components/src";
+import PageTitle from "src/components/PageTitle";
 
 export default function Page({ component }: { component: Component }) {
   const Component = useMDXComponent(component.body.code, {
@@ -13,9 +14,11 @@ export default function Page({ component }: { component: Component }) {
 
   return (
     <article>
-      <Stack direction="column" space="10px">
-        <h1>{component.title}</h1>
-        <p>{component.description}</p>
+      <Stack direction="column" space="16px">
+        <PageTitle
+          title={component.title}
+          description={component.description}
+        />
         <Component components={components} />
         <a href={component.sourceLink}>View source</a>
         <a href={component.docsLink}>Edit this page</a>
@@ -32,6 +35,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log("allComponents", allComponents);
   const slug = params?.slug?.toString() as string;
   const component = allComponents.find((c) => c.slug === slug);
   return { props: { component } };
