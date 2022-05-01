@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { MouseEvent, ReactNode, useState } from "react";
 import Link from "next/link";
 import { allComponents, allDocs } from "contentlayer/generated";
 import * as styles from "./Layout.css";
@@ -19,7 +19,7 @@ const NavLink = ({
 }) => {
   const router = useRouter();
 
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     router.push(href);
   };
