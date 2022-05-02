@@ -54,6 +54,11 @@ export const link = style({
   fontWeight: "bold",
   fontSize: vars.fontSizes.small,
   display: "block",
+  paddingBlock: 6,
+  marginBlock: "-6px",
+  paddingInline: 12,
+  marginInline: "-12px",
+  borderRadius: "8px",
   ":hover": {
     textDecoration: "underline",
   },
@@ -61,11 +66,6 @@ export const link = style({
 
 export const activeLink = style({
   background: vars.colors.card,
-  paddingBlock: 6,
-  marginBlock: "-6px",
-  paddingInline: 12,
-  marginInline: "-12px",
-  borderRadius: "8px",
 });
 
 export const searchInput = style({
