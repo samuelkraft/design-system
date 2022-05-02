@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent, useLiveReload } from "next-contentlayer/hooks";
+
 import { components } from "../../components/MDX";
 
 import { allComponents } from "contentlayer/generated";
@@ -8,6 +9,7 @@ import { Stack } from "components/src";
 import PageTitle from "src/components/PageTitle";
 
 export default function Page({ component }: { component: Component }) {
+  useLiveReload();
   const Component = useMDXComponent(component.body.code, {
     types: component.types,
   });
@@ -18,9 +20,9 @@ export default function Page({ component }: { component: Component }) {
         <PageTitle
           title={component.title}
           description={component.description}
+          link={component.sourceLink}
         />
         <Component components={components} />
-        <a href={component.sourceLink}>View source</a>
         <a href={component.docsLink}>Edit this page</a>
       </Stack>
     </article>
@@ -35,7 +37,6 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log("allComponents", allComponents);
   const slug = params?.slug?.toString() as string;
   const component = allComponents.find((c) => c.slug === slug);
   return { props: { component } };

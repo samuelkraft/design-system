@@ -48,3 +48,10 @@ globalStyle("a", {
   color: vars.colors.link,
   textDecoration: "none",
 });
+
+globalStyle("article p", {
+  color: vars.colors.text,
+  lineHeight: 1.6,
+  marginBottom: vars.space.medium,
+  fontSize: 17,
+});

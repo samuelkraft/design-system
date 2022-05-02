@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent, useLiveReload } from "next-contentlayer/hooks";
 import { components } from "src/components/MDX";
 
 import { allDocs } from "contentlayer/generated";
@@ -8,6 +8,7 @@ import { Stack } from "components/src";
 import PageTitle from "src/components/PageTitle";
 
 export default function Page({ doc }: { doc: Doc }) {
+  useLiveReload();
   const Component = useMDXComponent(doc.body.code);
 
   return (
