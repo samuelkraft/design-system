@@ -71,6 +71,7 @@ export const Doc = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: true },
+    category: { type: "string", required: true },
   },
   computedFields: {
     slug: {
